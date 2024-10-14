@@ -1,2 +1,3 @@
 data/finetune
 */__pycache__/
+flash_vstream/**/__pycache__/

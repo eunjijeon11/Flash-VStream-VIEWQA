@@ -28,6 +28,20 @@ def exec(cmd, sub=False, device=None):
         my_env["CUDA_VISIBLE_DEVICES"] = device
         subprocess.run(cmd, env=my_env)
 
+def eval_viewqa(args): # only making predicted outputs
+    model_path = args.model_path
+    num_chunks = args.num_chunks
+    if not args.only_eval:
+        cmd = ["python", "flash_vstream/eval_video/model_view_qa_featuresloader.py",
+                    "--model-path", model_path,
+                    "--video_dir", "./data/finetune/video_features",
+                    "--gt_file", "./data/val_qa.json",
+                    "--output_dir", os.path.join(model_path, "evaluation", "viewqa"),
+                    "--output_name", "pred",
+                    "--num-chunks", str(num_chunks),
+                    "--conv-mode", "vicuna_v1"]
+    exec(cmd)
+
 # multi gpu, feature
 def eval_msvd(args):
     model_path = args.model_path
@@ -35,7 +49,7 @@ def eval_msvd(args):
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/MSVD-QA/video_features",
                     "--gt_file", "./data/eval_video/MSVD-QA/test_qa.json",
@@ -49,7 +63,7 @@ def eval_msvd(args):
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "msvd"),
            "--output_dir", os.path.join(model_path, "evaluation", "msvd", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "msvd", "results.json"),
@@ -69,7 +83,7 @@ def eval_msrvtt(args):
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/MSRVTT-QA/video_features",
                     "--gt_file", "./data/eval_video/MSRVTT-QA/test_qa.json",
@@ -83,7 +97,7 @@ def eval_msrvtt(args):
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "msrvtt"),
            "--output_dir", os.path.join(model_path, "evaluation", "msrvtt", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "msrvtt", "results.json"),
@@ -103,7 +117,7 @@ def eval_actnet(args):
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/ActivityNet-QA/video_features",
                     "--gt_file", "./data/eval_video/ActivityNet-QA/test_qa.json", 
@@ -119,7 +133,7 @@ def eval_actnet(args):
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "actnet"),
            "--output_dir", os.path.join(model_path, "evaluation", "actnet", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "actnet", "results.json"),
@@ -139,7 +153,7 @@ def eval_nextoe(args):  # follow msvd format, OE follow actnet
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/nextoe/video_features",
                     "--gt_file", "./data/eval_video/nextoe/test_qa.json",
@@ -155,7 +169,7 @@ def eval_nextoe(args):  # follow msvd format, OE follow actnet
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "nextoe"),
            "--output_dir", os.path.join(model_path, "evaluation", "nextoe", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "nextoe", "results.json"),
@@ -175,7 +189,7 @@ def eval_vsmovienet(args):  # follow msvd format
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/vstream/movienet_video_features",
                     "--gt_file", "./data/eval_video/vstream/test_qa_movienet.json",
@@ -191,7 +205,7 @@ def eval_vsmovienet(args):  # follow msvd format
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "vsmovienet"),
            "--output_dir", os.path.join(model_path, "evaluation", "vsmovienet", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "vsmovienet", "results.json"),
@@ -211,7 +225,7 @@ def eval_vsego4d(args):  # follow msvd format
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/vstream/ego4d_video_features",
                     "--gt_file", "./data/eval_video/vstream/test_qa_ego4d.json",
@@ -227,7 +241,7 @@ def eval_vsego4d(args):  # follow msvd format
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "vsego4d"),
            "--output_dir", os.path.join(model_path, "evaluation", "vsego4d", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "vsego4d", "results.json"),
@@ -247,7 +261,7 @@ def eval_realtime_vsmovienet(args):  # follow msvd format
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/vstream-realtime/movienet_video_features",
                     "--gt_file", "./data/eval_video/vstream-realtime/test_qa_movienet.json",
@@ -263,7 +277,7 @@ def eval_realtime_vsmovienet(args):  # follow msvd format
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "realtime_vsmovienet"),
            "--output_dir", os.path.join(model_path, "evaluation", "realtime_vsmovienet", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "realtime_vsmovienet", "results.json"),
@@ -283,7 +297,7 @@ def eval_realtime_vsego4d(args):  # follow msvd format
     if not args.only_eval:
         processes = []
         for idx in range(0, num_chunks):
-            cmd = ["python", "llama_vstream/eval_video/model_msvd_qa_featuresloader.py",
+            cmd = ["python", "flash_vstream/eval_video/model_msvd_qa_featuresloader.py",
                     "--model-path", model_path,
                     "--video_dir", "./data/eval_video/vstream-realtime/ego4d_video_features",
                     "--gt_file", "./data/eval_video/vstream-realtime/test_qa_ego4d.json",
@@ -299,7 +313,7 @@ def eval_realtime_vsego4d(args):  # follow msvd format
             p.start() # 启动子进程
         for p in processes:
             p.join()
-    cmd = ["python", "llama_vstream/eval_video/eval_activitynet_qa.py",
+    cmd = ["python", "flash_vstream/eval_video/eval_activitynet_qa.py",
            "--pred_path", os.path.join(model_path, "evaluation", "realtime_vsego4d"),
            "--output_dir", os.path.join(model_path, "evaluation", "realtime_vsego4d", "results"),
            "--output_json", os.path.join(model_path, "evaluation", "realtime_vsego4d", "results.json"),
@@ -334,6 +348,7 @@ if __name__ == "__main__":
                 'vsego4d': eval_vsego4d,
                 'realtime_vsmovienet': eval_realtime_vsmovienet,
                 'realtime_vsego4d': eval_realtime_vsego4d,
+                'viewqa': eval_viewqa
                 }
     if args.dataset in func_dic:
         print(f'Execute {args.dataset} evaluation')

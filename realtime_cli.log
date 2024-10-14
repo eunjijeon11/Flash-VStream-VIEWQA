@@ -1,0 +1,37 @@
+2024-10-11 21:40:56,800 MainProcess urllib3.connectionpool DEBUG    Starting new HTTPS connection (1): huggingface.co:443
+2024-10-11 21:40:57,032 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 21:41:02,181 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/preprocessor_config.json HTTP/11" 200 0
+2024-10-11 21:41:02,444 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 21:41:02,640 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/adapter_config.json HTTP/11" 404 0
+2024-10-11 21:41:02,874 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 21:41:05,731 MainProcess __main__ INFO     Using conv_mode=vicuna_v1
+2024-10-11 21:41:08,007 MainProcess __main__ INFO     Important: set model.config.video_max_frames = 1200
+2024-10-11 21:41:08,007 MainProcess __main__ INFO     Important: set video_fps = 1.0
+2024-10-11 21:41:08,007 MainProcess __main__ INFO     Important: set play_speed = 1.0
+2024-10-11 21:57:28,744 MainProcess urllib3.connectionpool DEBUG    Starting new HTTPS connection (1): huggingface.co:443
+2024-10-11 21:57:28,978 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 21:57:34,144 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/preprocessor_config.json HTTP/11" 200 0
+2024-10-11 21:57:34,334 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 21:57:34,527 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 21:57:34,891 MainProcess __main__ INFO     Using conv_mode=vicuna_v1
+2024-10-11 21:57:37,169 MainProcess __main__ INFO     Important: set model.config.video_max_frames = 1200
+2024-10-11 21:57:37,169 MainProcess __main__ INFO     Important: set video_fps = 1.0
+2024-10-11 21:57:37,169 MainProcess __main__ INFO     Important: set play_speed = 1.0
+2024-10-11 22:18:19,122 MainProcess urllib3.connectionpool DEBUG    Starting new HTTPS connection (1): huggingface.co:443
+2024-10-11 22:18:19,372 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 22:18:24,852 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/preprocessor_config.json HTTP/11" 200 0
+2024-10-11 22:18:25,042 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 22:18:25,236 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 22:18:25,599 MainProcess __main__ INFO     Using conv_mode=vicuna_v1
+2024-10-11 22:18:27,953 MainProcess __main__ INFO     Important: set model.config.video_max_frames = 1200
+2024-10-11 22:18:27,953 MainProcess __main__ INFO     Important: set video_fps = 1.0
+2024-10-11 22:18:27,953 MainProcess __main__ INFO     Important: set play_speed = 1.0
+2024-10-11 23:50:22,263 MainProcess urllib3.connectionpool DEBUG    Starting new HTTPS connection (1): huggingface.co:443
+2024-10-11 23:50:22,509 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 23:50:34,269 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/preprocessor_config.json HTTP/11" 200 0
+2024-10-11 23:50:34,470 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/config.json HTTP/11" 200 0
+2024-10-11 23:50:34,668 MainProcess urllib3.connectionpool DEBUG    https://huggingface.co:443 "HEAD /openai/clip-vit-large-patch14/resolve/main/model.safetensors HTTP/11" 302 0
+2024-10-11 23:50:35,097 MainProcess __main__ INFO     Using conv_mode=vicuna_v1
+2024-10-11 23:50:37,687 MainProcess __main__ INFO     Important: set model.config.video_max_frames = 1200
+2024-10-11 23:50:37,687 MainProcess __main__ INFO     Important: set video_fps = 1.0
+2024-10-11 23:50:37,687 MainProcess __main__ INFO     Important: set play_speed = 1.0
