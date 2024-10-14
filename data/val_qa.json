@@ -14604,7 +14604,7 @@
   {
     "video": "Normal_Market_043",
     "question": "how many calories are in this food",
-    "answer": 930,
+    "answer": "930",
     "q_type": "OI",
     "Safety": "",
     "time": 42,
